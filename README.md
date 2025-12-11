@@ -186,8 +186,8 @@ MIT License - Feel free to use this for your own fun projects!
 
 ## ⚠️ Disclaimer
 
-This is a **joke website** for a school project. There is no actual ice cream delivery service. Bobette is not real (unfortunately). If you click the "Order" button, you'll just get confetti and disappointment! 😂
+This is a **joke website** for a school project. There is no actual ice cream delivery service. Bobette is not real (unfortunately). If you click the "Order" button, you'll just get confetti and disappointment! 
 
 ---
 
-**Bob and Her Bike** - Spreading joy, one scoop at a time! 🍦🚴‍♀️
+**Bobette and Her Bike** - Spreading joy, one scoop at a time! 🍦🚴‍♀️
