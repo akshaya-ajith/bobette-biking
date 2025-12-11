@@ -242,77 +242,22 @@ function createConfetti() {
 // ============================================
 
 function initAudio() {
-    // Create AudioContext for ice cream truck melody
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const audioContext = new AudioContext();
+    // Create audio element for ice cream truck music
+    audio = new Audio('assets/ice-cream-truck.mp3');
+    audio.loop = true;
+    audio.volume = 0.5;
 
-    // Ice cream truck melody notes (in Hz)
-    // "Turkey in the Straw" style melody
-    const melody = [
-        { freq: 659.25, duration: 0.2 }, // E
-        { freq: 587.33, duration: 0.2 }, // D
-        { freq: 523.25, duration: 0.2 }, // C
-        { freq: 587.33, duration: 0.2 }, // D
-        { freq: 659.25, duration: 0.4 }, // E
-        { freq: 659.25, duration: 0.4 }, // E
-        { freq: 587.33, duration: 0.2 }, // D
-        { freq: 587.33, duration: 0.2 }, // D
-        { freq: 659.25, duration: 0.2 }, // E
-        { freq: 783.99, duration: 0.4 }, // G
-        { freq: 783.99, duration: 0.4 }, // G
-    ];
-
-    let currentNote = 0;
-    let isPlaying = false;
-    let scheduledTime = audioContext.currentTime;
-
-    function playNote(frequency, duration) {
-        const oscillator = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
-
-        oscillator.connect(gainNode);
-        gainNode.connect(audioContext.destination);
-
-        oscillator.frequency.value = frequency;
-        oscillator.type = 'sine';
-
-        // Envelope for smoother sound
-        gainNode.gain.setValueAtTime(0, scheduledTime);
-        gainNode.gain.linearRampToValueAtTime(0.1, scheduledTime + 0.01);
-        gainNode.gain.linearRampToValueAtTime(0.05, scheduledTime + duration - 0.01);
-        gainNode.gain.linearRampToValueAtTime(0, scheduledTime + duration);
-
-        oscillator.start(scheduledTime);
-        oscillator.stop(scheduledTime + duration);
-
-        scheduledTime += duration;
-        currentNote = (currentNote + 1) % melody.length;
-
-        // Schedule next note
-        if (isPlaying) {
-            setTimeout(() => {
-                if (isPlaying) {
-                    const note = melody[currentNote];
-                    playNote(note.freq, note.duration);
-                }
-            }, duration * 1000);
-        }
-    }
-
+    // Wrap in object for consistent interface
+    const audioPlayer = audio;
     audio = {
         play: () => {
-            if (audioContext.state === 'suspended') {
-                audioContext.resume();
-            }
-            isPlaying = true;
-            scheduledTime = audioContext.currentTime;
-            currentNote = 0;
-            const note = melody[currentNote];
-            playNote(note.freq, note.duration);
+            audioPlayer.play().catch(err => {
+                console.log('Audio play failed:', err);
+            });
             return Promise.resolve();
         },
         pause: () => {
-            isPlaying = false;
+            audioPlayer.pause();
         }
     };
 }
