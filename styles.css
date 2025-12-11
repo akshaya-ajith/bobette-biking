@@ -1,0 +1,540 @@
+/* ============================================
+   CSS Variables - Ice Cream Color Palette
+   ============================================ */
+:root {
+    /* Chocolate Browns */
+    --chocolate-dark: #654321;
+    --chocolate-medium: #8B4513;
+    --chocolate-light: #A0522D;
+
+    /* Waffle Cone Peachy-Orange */
+    --cone-orange: #FFB347;
+    --cone-peach: #FFCC99;
+    --cone-light: #FFE4B5;
+
+    /* Ice Cream Pinks */
+    --pink-light: #FFB6C1;
+    --pink-medium: #FF69B4;
+    --pink-dark: #FF1493;
+
+    /* Vanilla Cream */
+    --vanilla: #FFF8DC;
+    --cream: #FFFACD;
+
+    /* Sprinkle Colors */
+    --sprinkle-red: #FF6B6B;
+    --sprinkle-yellow: #FFD93D;
+    --sprinkle-green: #6BCB77;
+    --sprinkle-blue: #4D96FF;
+    --sprinkle-purple: #9D4EDD;
+
+    /* Gradients */
+    --gradient-warm: linear-gradient(135deg, var(--cone-orange) 0%, var(--pink-light) 100%);
+    --gradient-chocolate: linear-gradient(135deg, var(--chocolate-medium) 0%, var(--chocolate-dark) 100%);
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+}
+
+/* ============================================
+   Global Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #FFF8DC 0%, #FFE4B5 50%, #FFCC99 100%);
+    background-attachment: fixed;
+    color: var(--chocolate-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ============================================
+   Sprinkles Animation
+   ============================================ */
+.sprinkles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.sprinkle {
+    position: absolute;
+    width: 4px;
+    height: 12px;
+    border-radius: 2px;
+    opacity: 0.6;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.header {
+    background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10;
+}
+
+.title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--vanilla);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: var(--spacing-xs);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--cone-light);
+    font-weight: 500;
+}
+
+/* ============================================
+   Main Content
+   ============================================ */
+.main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+    position: relative;
+    z-index: 10;
+}
+
+.section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--chocolate-medium);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================
+   Live Updates Panel
+   ============================================ */
+.live-updates {
+    margin-bottom: var(--spacing-xl);
+}
+
+.update-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.update-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 179, 71, 0.3);
+}
+
+.update-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--cone-orange);
+}
+
+.update-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.update-content {
+    flex: 1;
+}
+
+.update-label {
+    font-size: 0.9rem;
+    color: var(--chocolate-medium);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.update-value {
+    font-size: 1.1rem;
+    color: var(--chocolate-dark);
+    font-weight: 700;
+}
+
+/* ============================================
+   Map Section
+   ============================================ */
+.map-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.map-container {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border: 4px solid var(--cone-orange);
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+}
+
+.map-controls {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    z-index: 1000;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--cone-orange);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.control-btn:hover {
+    transform: scale(1.1);
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+/* ============================================
+   Stats Dashboard
+   ============================================ */
+.stats-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.stat-card {
+    background: var(--gradient-warm);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+}
+
+.stat-card:hover::before {
+    left: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.stat-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.stat-value {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: var(--spacing-xs);
+    transition: all 0.3s ease;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--chocolate-dark);
+    font-weight: 600;
+}
+
+/* ============================================
+   Reviews Section
+   ============================================ */
+.reviews-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    max-height: 400px;
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--pink-medium);
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.review-author {
+    font-weight: 700;
+    color: var(--chocolate-dark);
+}
+
+.review-stars {
+    color: var(--sprinkle-yellow);
+}
+
+.review-text {
+    color: var(--chocolate-medium);
+    line-height: 1.5;
+}
+
+/* ============================================
+   Order Section
+   ============================================ */
+.order-section {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.order-btn {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    background: var(--gradient-chocolate);
+    color: var(--vanilla);
+    border: none;
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-md) var(--spacing-xl);
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.order-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.order-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.order-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.order-btn:active {
+    transform: scale(0.98);
+}
+
+/* ============================================
+   Confetti
+   ============================================ */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: confettiFall 3s ease-out forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+    background: var(--gradient-chocolate);
+    padding: var(--spacing-lg);
+    text-align: center;
+    color: var(--vanilla);
+    margin-top: var(--spacing-xl);
+}
+
+.footer p {
+    margin-bottom: var(--spacing-xs);
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    #map {
+        height: 350px;
+    }
+
+    .update-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-content {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+}
+
+/* ============================================
+   Custom Scrollbar
+   ============================================ */
+.reviews-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.reviews-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.reviews-container::-webkit-scrollbar-thumb {
+    background: var(--cone-orange);
+    border-radius: 10px;
+}
+
+.reviews-container::-webkit-scrollbar-thumb:hover {
+    background: var(--chocolate-medium);
+}

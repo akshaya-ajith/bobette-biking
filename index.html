@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track Bobette's ice cream bike in real-time around Baltimore! Bob and Her Bike delivers sweet treats to Johns Hopkins, Charles Village, and Hampden.">
+    <title>Bobette's Ice Cream Bike Tracker 🍦 | Bob and Her Bike</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sprinkles decoration -->
+    <div class="sprinkles-container" id="sprinklesContainer"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="title">🍦 Bob and Her Bike 🚴‍♀️</h1>
+            <p class="subtitle">Tracking Bobette's Sweet Journey Through Baltimore</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Live Updates Panel -->
+        <section class="live-updates" id="liveUpdates">
+            <h2 class="section-title">📍 Live Location</h2>
+            <div class="update-grid">
+                <div class="update-card">
+                    <div class="update-icon">🗺️</div>
+                    <div class="update-content">
+                        <div class="update-label">Current Location</div>
+                        <div class="update-value" id="currentLocation">Loading...</div>
+                    </div>
+                </div>
+                <div class="update-card">
+                    <div class="update-icon">⏰</div>
+                    <div class="update-content">
+                        <div class="update-label">Last Seen</div>
+                        <div class="update-value" id="lastSeen">Just now</div>
+                    </div>
+                </div>
+                <div class="update-card">
+                    <div class="update-icon">🎯</div>
+                    <div class="update-content">
+                        <div class="update-label">ETA to Your Area</div>
+                        <div class="update-value" id="eta">Calculating...</div>
+                    </div>
+                </div>
+                <div class="update-card">
+                    <div class="update-icon">🚴‍♀️</div>
+                    <div class="update-content">
+                        <div class="update-label">Current Speed</div>
+                        <div class="update-value" id="speed">0 mph</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Container -->
+        <section class="map-section">
+            <h2 class="section-title">🗺️ Track Bobette in Real-Time</h2>
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-controls">
+                    <button id="soundToggle" class="control-btn" aria-label="Toggle sound">
+                        <span id="soundIcon">🔇</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Dashboard -->
+        <section class="stats-section">
+            <h2 class="section-title">📊 Today's Sweet Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🍨</div>
+                    <div class="stat-value" id="scoopsServed">0</div>
+                    <div class="stat-label">Scoops Served</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎨</div>
+                    <div class="stat-value" id="flavorOfDay">Loading...</div>
+                    <div class="stat-label">Flavor of the Day</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📏</div>
+                    <div class="stat-value" id="distanceTraveled">0.0</div>
+                    <div class="stat-label">Miles Traveled</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">😊</div>
+                    <div class="stat-value" id="happyCustomers">0</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Reviews -->
+        <section class="reviews-section">
+            <h2 class="section-title">💬 Customer Reviews</h2>
+            <div class="reviews-container" id="reviewsContainer">
+                <!-- Reviews will be added dynamically -->
+            </div>
+        </section>
+
+        <!-- Order Button -->
+        <section class="order-section">
+            <button id="orderButton" class="order-btn">
+                🍦 Order Ice Cream Now! 🍦
+            </button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with 💖 and 🍦 | Bob and Her Bike © 2024</p>
+        <p class="disclaimer">This is a joke website for a school project. No actual ice cream delivery available... yet! 😉</p>
+    </footer>
+
+    <!-- Confetti Container -->
+    <div id="confettiContainer" class="confetti-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
