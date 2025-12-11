@@ -280,7 +280,7 @@ function startAnimations() {
     updateETA(); // Initial update
 
     // Add reviews periodically
-    setInterval(addReview, 45000); // Every 45 seconds
+    setInterval(addReview, 5000); // Every 5 seconds
     addReview(); // Add first review immediately
 
     // Update timestamps
